@@ -24,16 +24,25 @@ function shuffle(e) {
 let shuffleButton = document.getElementById(`shuffleButton`);
 shuffleButton.addEventListener("click", shuffle);
 
-let newDeckId = Cookies.get(`deckIdentification`);
 function draw(e) {
-    let ajax = new XMLHttpRequest();
+    let newDeckId = Cookies.get(`deckIdentification`);
     ajax.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            // these variables allow the function to access all the variables the API of "draw" gives
             let drawSetup = JSON.parse(this.responseText);
             let remainingCards = drawSetup.remaining;
-            document.getElementById(`remainingCardsCounter`).innerText = `Remaining Cards: ${remainingCards}`;
-        }
+            // this loop allows the function to change the amount of numbers within the deck on the HTML page, with a condition if there are no cards left
+            if (drawSetup.success) {
+                document.getElementById(`remainingCardsCounter`).innerText = `Remaining Cards: ${remainingCards}`; 
+            } else if (!drawSetup.success) {
+                document.getElementById(`remainingCardsCounter`).innerText = `No Cards Remaining`;
+            }
+
+            let cardsVariable = drawSetup.cards;
+            for (var i=0; i>cardsVariable.length; i++) {
+                
+            }
+        } 
     } 
     ajax.open("GET", `https://deckofcardsapi.com/api/deck/${newDeckId}/draw/?count=1`, true);
     ajax.send();
