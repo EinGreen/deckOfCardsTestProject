@@ -1,0 +1,10 @@
+#buttonMenu {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+button {
+  width: 200px;
+}
+/*# sourceMappingURL=style.css.map */

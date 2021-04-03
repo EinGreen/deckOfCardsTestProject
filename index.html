@@ -5,14 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random API Test</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <header>
+        <h1>Random Deck API Test</h1>
+        <p>Shuffle the Deck to Start</p>
+    </header>
     <main>
-        <section>
-            <p id="shuffleMessage"></p>
-            <br>
+        <section id="buttonMenu">
             <button id="shuffleButton">Shuffle Deck</button>
+            <button id="drawCardButton">Draw Card</button>
         </section>
+        <p id="shuffleMessage"></p>
+        <h3 id="remainingCardsCounter">Remaining Cards: Deck not set up</h3>
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
