@@ -1,4 +1,7 @@
+// variable for the ajax that helps my functions connect to an API
 let ajax = new XMLHttpRequest();
+// this function creates a new deck and shuffles it
+// Note: It uses Cookies to get the deck's ID for the draw function to work
 function shuffle(e) {
     ajax.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -20,10 +23,11 @@ function shuffle(e) {
     ajax.open("GET", "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1", true);
     ajax.send();
 }
-
+// this variable + event listener allows the shuffle button to work
 let shuffleButton = document.getElementById(`shuffleButton`);
 shuffleButton.addEventListener("click", shuffle);
 
+// this function draws a card from the deck
 function draw(e) {
     let newDeckId = Cookies.get(`deckIdentification`);
     ajax.onreadystatechange = function() {
@@ -40,13 +44,14 @@ function draw(e) {
 
             let cardsVariable = drawSetup.cards;
             for (var i=0; i>cardsVariable.length; i++) {
-                
+                console.log(cardsVariable[i]);
+                // supposidly, this loop is supposed to state what card you drew, but I still haven't figured that part out
             }
         } 
     } 
     ajax.open("GET", `https://deckofcardsapi.com/api/deck/${newDeckId}/draw/?count=1`, true);
     ajax.send();
 }
-
+// this variable + event listener allows the draw button to work
 let drawButton = document.getElementById(`drawCardButton`);
 drawButton.addEventListener(`click`, draw)

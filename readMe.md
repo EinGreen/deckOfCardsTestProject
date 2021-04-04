@@ -1,5 +1,6 @@
 Deck of Cards API from: https://github.com/public-apis/public-apis#games--comics
-Just freaking look at it
+Actual Link to the API: http://deckofcardsapi.com/
+Just look at it
 
 Shuffle API: https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
 <!-- Note: you can set the number of decks by manipulating the deck_count number -->
